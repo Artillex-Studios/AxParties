@@ -1,0 +1,40 @@
+name: AxParties
+version: '1.0.0'
+main: com.artillexstudios.axparties.AxParties
+api-version: '1.18'
+folia-supported: false
+
+permissions:
+  "axparties.reload":
+    default: op
+  "axparties.use":
+    default: true
+  "axparties.create":
+    default: true
+  "axparties.disband":
+    default: true
+  "axparties.invite":
+    default: true
+  "axparties.kick":
+    default: true
+  "axparties.accept":
+    default: true
+  "axparties.deny":
+    default: true
+  "axparties.leave":
+    default: true
+  "axparties.list":
+    default: true
+  "axparties.rename":
+    default: true
+  "axparties.chat":
+    default: true
+  "axparties.transfer":
+    default: true
+  "axparties.list.other":
+    default: op
+  "axparties.limit.8":
+    default: false
+
+softdepend:
+  - PlaceholderAPI

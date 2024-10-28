@@ -1,0 +1,41 @@
+# DOCUMENTATION: https://docs.artillex-studios.com/axparties.html
+
+prefix: "<gradient:#0099FF:#00BBFF><b>AxParties</b></gradient> &7» "
+
+# you must define at least 1
+command-aliases:
+  - "axparties"
+  - "axparty"
+  - "parties"
+  - "party"
+
+name-rules:
+  length:
+    min: 3
+    max: 16
+  # the party name can't contain these words
+  blacklisted-words:
+    - "blacklistedname"
+
+# how many members can a single party have? (including the owner)
+# you can override this if the party owner has the axparties.limit.<number> permission!
+member-limit: 8
+
+# if disabled, when the party owner leaves, another player gets the owner role
+allow-offline-owner: true
+
+# should the party get disbanded if all members leave?
+disband-when-all-offline: false
+
+# after how many seconds should party invites expire?
+invite-expiration-seconds: 60
+
+# should be plugin notify you if there is a new update?
+update-notifier:
+  # if enabled, it will display the message in the console
+  enabled: true
+  # if enabled, it will broadcast the update message to all players who have the <plugin-name>.update-notify permission
+  on-join: true
+
+# do not change
+version: 1

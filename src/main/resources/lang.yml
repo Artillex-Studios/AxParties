@@ -1,0 +1,114 @@
+# DOCUMENTATION: https://docs.artillex-studios.com/axparties.html
+
+help:
+  - " "
+  - "<gradient:#0099FF:#00BBFF><b>AxParties</b></gradient> &7» "
+  - " &7- &f/party create [party] &7| &#77DDFFCreate party"
+  - " &7- &f/party disband &7| &#77DDFFDisband party"
+  - " &7- &f/party invite <player> &7| &#77DDFFInvite a player"
+  - " &7- &f/party kick <player> &7| &#77DDFFKick a player"
+  - " &7- &f/party accept [party]  &7| &#77DDFFAccept invite"
+  - " &7- &f/party deny [party] &7| &#77DDFFDecline invite"
+  - " &7- &f/party leave &7| &#77DDFFLeave party"
+  - " &7- &f/party list [party] &7| &#77DDFFList members of party"
+  - " &7- &f/party reload &7| &#77DDFFReload plugin"
+  - " &7- &f/party rename <name> &7| &#77DDFFRename party"
+  - " &7- &f/party chat &7| &#77DDFFToggle chat mode"
+  - " &7- &f/party chat <message> &7| &#77DDFFSend message in party chat"
+  - " "
+
+list:
+  - "&#00BBFFMembers of &n%party%&#00BBFF party:"
+  - " "
+  - "&#00BBFFLeader: &#77DDFF%leader%"
+  - " "
+  - "&#00BBFFOnline:"
+  - " &#00BBFF&l> &#AAFFAA%online%"
+  - " "
+  - "&#00BBFFOffline:"
+  - " &#00BBFF&l> &#FFAAAA%offline%"
+  - " "
+
+created: "&#77DDFFYou have created the &#00BBFF%party% &#77DDFFparty!"
+new-owner: "&#00BBFF%player% &#77DDFFhas left, so the party's leadership was transferred to &#00BBFF%owner%&#77DDFF!"
+
+chat:
+  enabled: "&#77DDFFYou have switched to PARTY chat!"
+  disabled: "&#77DDFFYou have switched to GLOBAL chat!"
+  format: "&#DDDDDDᴘᴀʀᴛʏ &#00BBFF[%player%] &#77DDFF%message%"
+
+disband:
+  self: "&#77DDFFYou have disbanded the &#00BBFF%party% &#77DDFFparty!"
+  broadcast: "&#77DDFFYou have been kicked, because the party was disbanded!"
+
+transfer:
+  self: "&#77DDFFYou have transferred the party to &#00BBFF%player%&#77DDFF!"
+  broadcast: "&#77DDFFThe new owner of the party is &#00BBFF%player%&#77DDFF!"
+
+kick:
+  kicker: "&#77DDFFYou have kicked &#00BBFF%player% &#77DDFFfrom the party!"
+  kicked: "&#77DDFFYou have got kicked from the party!"
+  broadcast: "&#00BBFF%player% &#77DDFFhas got kicked from the party!"
+
+invite:
+  inviter: "&#77DDFFYou have invited &#00BBFF%player% &#77DDFFto the party!"
+  invited:
+    info: "&#77DDFFYou have been invited to the &#00BBFF%party% &#77DDFFparty!"
+    accept:
+      message: "&#00FF00/party accept %party%"
+      hover: "&#00FF00Click here to &naccept&#00FF00 invite!"
+    deny:
+      message: "&#FF0000/party deny %party%"
+      hover: "&#FF0000Click here to &ndeny&#FF0000 invite!"
+  broadcast: "&#00BBFF%player% &#77DDFFhas been invited to the party!"
+
+rename:
+  self: "&#77DDFFYou have renamed the party to &#00BBFF%party%&#77DDFF!"
+  broadcast: "&#77DDFFThe party has been renamed to &#00BBFF%party%&#77DDFF!"
+
+leave:
+  self: "&#77DDFFYou have left the &#00BBFF%party% &#77DDFFparty!"
+  broadcast: "&#00BBFF%player% &#77DDFFhas left the party!"
+
+join:
+  self: "&#77DDFFYou have joined the &#00BBFF%party% &#77DDFFparty!"
+  broadcast: "&#00BBFF%player% &#77DDFFhas joined the party!"
+
+deny:
+  self: "&#77DDFFYou have declined the invitation of the &#00BBFF%party% &#77DDFFparty!"
+  broadcast: "&#00BBFF%player% &#77DDFFhas declined the party's invite!"
+
+errors:
+  already-in-party: "&#77DDFFYou are already in a party!"
+  not-in-party: "&#77DDFFYou are not in any party!"
+  not-the-leader: "&#77DDFFOnly the party leader can do this!"
+  not-same-party: "&#77DDFFThe player is not in your party!"
+  no-invites: "&#77DDFFYou have not been invited to any party!"
+  not-invited: "&#77DDFFYou don't have any invites to this party!"
+  already-has-party: "&#77DDFFThe player is already in a party!"
+  self: "&#77DDFFYou can't do this action on yourself!"
+  not-found: "&#77DDFFParty not found!"
+  name-blacklisted: "&#77DDFFThe given party name contains blacklisted words!"
+  name-length: "&#77DDFFThe given party name is either too long or too short!"
+  full: "&#77DDFFThe party is full! &#DDDDDD(%members%/%total%)"
+  already-exists: "&#77DDFFA party with name %name% already exists!"
+  already-invited: "&#77DDFFThis player has been already invited!"
+
+reload:
+  success: "&#33FF33Plugin successfully reloaded!"
+  failed: "&#FF3333Failed to reload the plugin! Something is wrong in the &f%file%&#FF3333 file, look in the console or use a yaml validator to fix the errors!"
+
+commands:
+  invalid-value: "&#FF0000Invalid parameter: &#BB0000%value%"
+  invalid-command: "&#FF0000Invalid command or subcommand!"
+  missing-argument: "&#FF0000Missing argument! You must specify a value for &#BB0000%value%&#FF0000."
+  no-permission: "&#FF0000You don't have permission to access this command!"
+  out-of-range: "&#FF0000The &#BB0000%number% &#FF0000must be between &#BB0000%min% &#FF0000and &#BB0000%max%&#FF0000!"
+  player-only: "&#FF0000You must be a player to use this command!"
+  invalid-player: "&#FF0000The player &#BB0000%player% &#FF0000can not be found!"
+  invalid-selector: "&#FF0000You can not use this selector in this command!"
+
+update-notifier: "&#FFDD88There is a new version of AxParties available! &#DDDDDD(&#FFFFFFcurrent: &#FF0000%current% &#DDDDDD| &#FFFFFFlatest: &#00FF00%latest%&#DDDDDD)"
+
+# do not change
+version: 1
