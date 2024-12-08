@@ -25,14 +25,14 @@ permissions:
     default: true
   "axparties.list":
     default: true
+  "axparties.list.other":
+    default: op
   "axparties.rename":
     default: true
   "axparties.chat":
     default: true
   "axparties.transfer":
     default: true
-  "axparties.list.other":
-    default: op
   "axparties.limit.8":
     default: false
 

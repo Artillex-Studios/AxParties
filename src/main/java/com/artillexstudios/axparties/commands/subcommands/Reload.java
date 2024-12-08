@@ -29,8 +29,6 @@ public enum Reload {
         }
         Bukkit.getConsoleSender().sendMessage(StringUtils.formatToString("&#0099FF╠ &#77DDFFReloaded &flang.yml&#77DDFF!"));
 
-        CommandManager.reload();
-
         Bukkit.getConsoleSender().sendMessage(StringUtils.formatToString("&#0099FF╚ &#0099FFSuccessful reload!"));
         MESSAGEUTILS.sendLang(sender, "reload.success");
     }
