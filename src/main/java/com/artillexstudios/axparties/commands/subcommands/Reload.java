@@ -1,7 +1,6 @@
 package com.artillexstudios.axparties.commands.subcommands;
 
 import com.artillexstudios.axapi.utils.StringUtils;
-import com.artillexstudios.axparties.commands.CommandManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;

@@ -1,0 +1,24 @@
+# if disabled, parties will go away after the server restarts
+# if enabled, they will be saved
+enabled: false
+
+database:
+  # supported databases:
+  # h2, mysql, postgresql
+  type: "h2"
+
+  # you only need to touch these when using mysql/postgresql
+  address: 127.0.0.1
+  port: 3306
+  database: admin
+  username: admin
+  password: "admin"
+  pool:
+    maximum-pool-size: 10
+    minimum-idle: 10
+    maximum-lifetime: 1800000
+    keepalive-time: 0
+    connection-timeout: 5000
+
+# do not change this
+version: 1

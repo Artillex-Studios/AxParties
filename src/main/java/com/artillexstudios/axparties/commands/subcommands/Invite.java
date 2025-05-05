@@ -1,6 +1,6 @@
 package com.artillexstudios.axparties.commands.subcommands;
 
-import com.artillexstudios.axapi.nms.NMSHandlers;
+import com.artillexstudios.axapi.nms.wrapper.ServerPlayerWrapper;
 import com.artillexstudios.axapi.utils.StringUtils;
 import com.artillexstudios.axparties.invite.InviteManager;
 import com.artillexstudios.axparties.party.Party;
@@ -56,11 +56,12 @@ public enum Invite {
         MESSAGEUTILS.sendLang(sender, "invite.inviter", Map.of("%player%", player.getName()));
 
         Map<String, String> rp = Map.of("%party%", party.getName());
-        NMSHandlers.getNmsHandler().sendMessage(player, StringUtils.format(CONFIG.getString("prefix") + LANG.getString("invite.invited.info"), rp));
-        NMSHandlers.getNmsHandler().sendMessage(player, StringUtils.format(LANG.getString("invite.invited.accept.message"), rp)
+        ServerPlayerWrapper wrapper = ServerPlayerWrapper.wrap(player);
+        wrapper.message(StringUtils.format(CONFIG.getString("prefix") + LANG.getString("invite.invited.info"), rp));
+        wrapper.message(StringUtils.format(LANG.getString("invite.invited.accept.message"), rp)
                 .hoverEvent(HoverEvent.hoverEvent(HoverEvent.Action.SHOW_TEXT, StringUtils.format(LANG.getString("invite.invited.accept.hover"), rp)))
                 .clickEvent(ClickEvent.clickEvent(ClickEvent.Action.RUN_COMMAND, "/party accept " + party.getName())));
-        NMSHandlers.getNmsHandler().sendMessage(player, StringUtils.format(LANG.getString("invite.invited.deny.message"), rp)
+        wrapper.message(StringUtils.format(LANG.getString("invite.invited.deny.message"), rp)
                 .hoverEvent(HoverEvent.hoverEvent(HoverEvent.Action.SHOW_TEXT, StringUtils.format(LANG.getString("invite.invited.deny.hover"), rp)))
                 .clickEvent(ClickEvent.clickEvent(ClickEvent.Action.RUN_COMMAND, "/party deny " + party.getName())));
 

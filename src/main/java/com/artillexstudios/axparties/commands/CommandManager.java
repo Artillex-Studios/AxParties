@@ -1,6 +1,5 @@
 package com.artillexstudios.axparties.commands;
 
-import com.artillexstudios.axapi.nms.NMSHandlers;
 import com.artillexstudios.axapi.utils.StringUtils;
 import com.artillexstudios.axparties.AxParties;
 import com.artillexstudios.axparties.commands.annotations.NoParty;
@@ -16,7 +15,6 @@ import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import revxrsal.commands.bukkit.BukkitCommandActor;
 import revxrsal.commands.bukkit.BukkitCommandHandler;
-import revxrsal.commands.bukkit.exception.InvalidPlayerException;
 import revxrsal.commands.exception.CommandErrorException;
 import revxrsal.commands.orphan.Orphans;
 
@@ -25,7 +23,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import static com.artillexstudios.axparties.AxParties.CONFIG;
 import static com.artillexstudios.axparties.AxParties.LANG;
@@ -35,18 +32,6 @@ public class CommandManager {
 
     public static void load() {
         handler = BukkitCommandHandler.create(AxParties.getInstance());
-
-        handler.registerValueResolver(0, OfflinePlayer.class, context -> {
-            String value = context.pop();
-            if (value.equalsIgnoreCase("self") || value.equalsIgnoreCase("me")) return ((BukkitCommandActor) context.actor()).requirePlayer();
-            OfflinePlayer player = NMSHandlers.getNmsHandler().getCachedOfflinePlayer(value);
-            if (player == null && !(player = Bukkit.getOfflinePlayer(value)).hasPlayedBefore()) throw new InvalidPlayerException(context.parameter(), value);
-            return player;
-        });
-
-        handler.getAutoCompleter().registerParameterSuggestions(OfflinePlayer.class, (args, sender, command) -> {
-            return Bukkit.getOnlinePlayers().stream().map(HumanEntity::getName).collect(Collectors.toSet());
-        });
 
         handler.getAutoCompleter().registerSuggestionFactory(parameter -> {
             if (parameter.hasAnnotation(PartyMember.class)) {
