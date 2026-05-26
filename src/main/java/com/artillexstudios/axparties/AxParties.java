@@ -17,7 +17,6 @@ import com.artillexstudios.axparties.commands.CommandManager;
 import com.artillexstudios.axparties.libraries.Libraries;
 import com.artillexstudios.axparties.listeners.ChatListener;
 import com.artillexstudios.axparties.listeners.PlayerListeners;
-import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import revxrsal.zapper.DependencyManager;
@@ -31,7 +30,6 @@ public final class AxParties extends AxPlugin {
     public static Config DATABASE;
     private static AxPlugin instance;
     private static ThreadedQueue<Runnable> threadedQueue;
-    public static BukkitAudiences BUKKITAUDIENCES;
     public static MessageUtils MESSAGEUTILS;
     private static AxMetrics metrics;
 
@@ -65,8 +63,6 @@ public final class AxParties extends AxPlugin {
 
         new Metrics(this, 23729);
 
-        BUKKITAUDIENCES = BukkitAudiences.create(this);
-
         CONFIG = new Config(new File(getDataFolder(), "config.yml"), getResource("config.yml"), GeneralSettings.builder().setUseDefaults(false).build(), LoaderSettings.builder().setAutoUpdate(true).build(), DumperSettings.DEFAULT, UpdaterSettings.builder().setVersioning(new BasicVersioning("version")).build());
         LANG = new Config(new File(getDataFolder(), "lang.yml"), getResource("lang.yml"), GeneralSettings.builder().setUseDefaults(false).build(), LoaderSettings.builder().setAutoUpdate(true).build(), DumperSettings.DEFAULT, UpdaterSettings.builder().setVersioning(new BasicVersioning("version")).build());
 //        DATABASE = new Config(new File(getDataFolder(), "database.yml"), getResource("database.yml"), GeneralSettings.builder().setUseDefaults(false).build(), LoaderSettings.builder().setAutoUpdate(true).build(), DumperSettings.DEFAULT, UpdaterSettings.builder().setVersioning(new BasicVersioning("version")).build());
@@ -92,7 +88,7 @@ public final class AxParties extends AxPlugin {
         if (metrics != null) metrics.cancel();
     }
 
-    public void updateFlags(FeatureFlags flags) {
-        flags.USE_LEGACY_HEX_FORMATTER.set(true);
+    public void updateFlags() {
+        FeatureFlags.USE_LEGACY_HEX_FORMATTER.set(true);
     }
 }

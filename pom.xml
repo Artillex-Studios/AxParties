@@ -6,13 +6,13 @@
 
     <groupId>com.artillexstudios</groupId>
     <artifactId>AxParties</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-beta3</version>
     <packaging>jar</packaging>
 
     <name>AxParties</name>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -22,10 +22,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
+                <version>3.15.0</version>
                 <configuration>
-                    <source>17</source>
-                    <target>17</target>
+                    <source>21</source>
+                    <target>21</target>
                     <compilerArgs>
                         <arg>-parameters</arg>
                     </compilerArgs>
@@ -34,7 +34,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.5.3</version>
+                <version>3.6.2</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -45,32 +45,32 @@
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <relocations>
                                 <relocation>
-                                    <pattern>dev.dejvokep.boostedyaml</pattern>
-                                    <shadedPattern>com.artillexstudios.axparties.libs.boostedyaml</shadedPattern>
-                                </relocation>
-                                <relocation>
                                     <pattern>com.artillexstudios.axapi</pattern>
-                                    <shadedPattern>com.artillexstudios.axparties.libs.axapi</shadedPattern>
+                                    <shadedPattern>com.artillexstudios.axspawners.libs.axapi</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>org.bstats</pattern>
                                     <shadedPattern>com.artillexstudios.axparties.libs.bstats</shadedPattern>
                                 </relocation>
                                 <relocation>
-                                    <pattern>net.kyori</pattern>
-                                    <shadedPattern>com.artillexstudios.axparties.libs.kyori</shadedPattern>
-                                </relocation>
-                                <relocation>
                                     <pattern>revxrsal.commands</pattern>
                                     <shadedPattern>com.artillexstudios.axparties.libs.lamp</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.zaxxer.hikari</pattern>
+                                    <shadedPattern>com.artillexstudios.axparties.libs.hikari</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>org.jdbi.v3</pattern>
                                     <shadedPattern>com.artillexstudios.axparties.libs.jdbi</shadedPattern>
                                 </relocation>
                                 <relocation>
-                                    <pattern>com.zaxxer.hikari</pattern>
-                                    <shadedPattern>com.artillexstudios.axrewards.libs.hikari</shadedPattern>
+                                    <pattern>com.mysql</pattern>
+                                    <shadedPattern>com.artillexstudios.axparties.libs.mysql</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.postgresql</pattern>
+                                    <shadedPattern>com.artillexstudios.axparties.libs.postgresql</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
@@ -119,38 +119,56 @@
         <dependency>
             <groupId>com.artillexstudios.axapi</groupId>
             <artifactId>axapi</artifactId>
-            <version>1.4.673</version>
+            <version>2.1.0-DEV-31</version>
             <scope>compile</scope>
             <classifier>all</classifier>
         </dependency>
         <dependency>
             <groupId>org.bstats</groupId>
             <artifactId>bstats-bukkit</artifactId>
-            <version>3.0.2</version>
+            <version>3.2.1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>me.clip</groupId>
             <artifactId>placeholderapi</artifactId>
-            <version>2.11.6</version>
+            <version>2.12.2</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jdbi</groupId>
             <artifactId>jdbi3-core</artifactId>
-            <version>3.47.0</version>
+            <version>3.53.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jdbi</groupId>
             <artifactId>jdbi3-sqlobject</artifactId>
-            <version>3.47.0</version>
+            <version>3.53.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>9.7.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.11</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
-            <version>5.1.0</version>
+            <version>7.0.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.kyori</groupId>
+            <artifactId>adventure-api</artifactId>
+            <version>4.26.1</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

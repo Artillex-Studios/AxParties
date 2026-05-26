@@ -4,6 +4,7 @@ import com.artillexstudios.axparties.party.Party;
 import com.artillexstudios.axparties.party.PartyManager;
 import org.bukkit.entity.Player;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -29,7 +30,7 @@ public enum Leave {
         party.removeMember(sender);
 
         if (party.getOwner().equals(sender)) {
-            var online = party.getOnlineMembers();
+            List<Player> online = party.getOnlineMembers();
             if (party.getMembers().isEmpty() || (online.isEmpty() && CONFIG.getBoolean("disband-when-all-offline", false))) {
                 party.clearInvites();
                 PartyManager.getParties().remove(party.getName());

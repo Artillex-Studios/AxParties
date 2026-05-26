@@ -2,13 +2,14 @@ package com.artillexstudios.axparties.party;
 
 import org.bukkit.entity.Player;
 
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class PartyManager {
     private static final ConcurrentHashMap<String, Party> parties = new ConcurrentHashMap<>();
 
-    public static ConcurrentHashMap<String, Party> getParties() {
+    public static Map<String, Party> getParties() {
         return parties;
     }
 

@@ -7,6 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -22,7 +23,7 @@ public class PlayerListeners implements Listener {
 
         Party party = partyOpt.get();
 
-        var online = party.getOnlineMembers();
+        List<Player> online = party.getOnlineMembers();
         online.remove(event.getPlayer());
         if (online.isEmpty() && CONFIG.getBoolean("disband-when-all-offline", false)) {
             party.clearInvites();

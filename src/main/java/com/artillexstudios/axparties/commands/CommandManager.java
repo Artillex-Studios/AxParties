@@ -37,9 +37,12 @@ public class CommandManager {
             if (parameter.hasAnnotation(PartyMember.class)) {
                 return (args, sender, command) -> {
                     Player player = sender.as(BukkitCommandActor.class).getAsPlayer();
-                    var party = PartyManager.getPartyOf(player);
-                    if (party.isEmpty()) return List.of();
-                    return party.get().getMembers().stream().filter(player1 -> !player1.equals(player)).map(OfflinePlayer::getName).filter(Objects::nonNull).toList();
+                    Party party = PartyManager.getPartyOf(player).orElse(null);
+                    if (party == null) return List.of();
+                    return party.getMembers().stream().filter(pl -> !pl.equals(player))
+                            .map(OfflinePlayer::getName)
+                            .filter(Objects::nonNull)
+                            .toList();
                 };
             }
             if (parameter.hasAnnotation(NoParty.class)) {
@@ -56,7 +59,7 @@ public class CommandManager {
 
         handler.registerValueResolver(Invite.class, resolver -> {
             final String inviteName = resolver.popForParameter();
-            var invites = InviteManager.getInvitesOf(resolver.actor().as(BukkitCommandActor.class).getAsPlayer());
+            List<Invite> invites = InviteManager.getInvitesOf(resolver.actor().as(BukkitCommandActor.class).getAsPlayer());
             Optional<Invite> inviteOpt = invites.stream().filter(invite -> invite.party().getName().equals(inviteName)).findAny();
             if (inviteOpt.isEmpty()) {
                 throw new CommandErrorException(StringUtils.formatToString(
@@ -88,14 +91,17 @@ public class CommandManager {
         });
 
         handler.getTranslator().add(new CommandMessages());
-        handler.setLocale(new Locale("en", "US"));
+        handler.setLocale(Locale.of("en", "US"));
 
         reload();
     }
 
     public static void reload() {
         handler.unregisterAllCommands();
-        handler.register(Orphans.path(CONFIG.getStringList("command-aliases").toArray(String[]::new)).handler(new PartyCommand()));
+        List<String> aliases = CONFIG.getStringList("command-aliases");
+        if (!aliases.isEmpty()) {
+            handler.register(Orphans.path(aliases.toArray(String[]::new)).handler(new PartyCommand()));
+        }
         handler.registerBrigadier();
     }
 }

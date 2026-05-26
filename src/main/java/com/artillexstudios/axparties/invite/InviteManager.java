@@ -6,11 +6,12 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class InviteManager {
-    private static final HashSet<Invite> invites = new HashSet<>();
+    private static final Set<Invite> invites = new HashSet<>();
 
-    public static HashSet<Invite> getInvites() {
+    public static Set<Invite> getInvites() {
         invites.removeIf(Invite::hasExpired);
         return invites;
     }

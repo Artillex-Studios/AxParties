@@ -8,19 +8,19 @@ import java.util.List;
 
 public enum Libraries {
 
-    MYSQL_CONNECTOR("com{}mysql:mysql-connector-j:8.0.33"),
-
-    SQLITE_JDBC("org{}xerial:sqlite-jdbc:3.42.0.0"),
-
     H2_JDBC("com{}h2database:h2:2.1.214"),
 
-    POSTGRESQL("org{}postgresql:postgresql:42.5.4"),
+    SQLITE_JDBC("org{}xerial:sqlite-jdbc:3.53.1.0"),
 
-    HIKARICP("com{}zaxxer:HikariCP:5.1.0", relocation("com{}zaxxer{}hikari", "com.artillexstudios.axparties.libs.hikari")),
+    MYSQL_CONNECTOR("com{}mysql:mysql-connector-j:9.7.0", relocation("com{}mysql", "com.artillexstudios.axparties.libs.mysql")),
 
-    JDBI_CORE("org{}jdbi:jdbi3-core:3.47.0", relocation("org{}jdbi{}v3", "com.artillexstudios.axparties.libs.jdbi")),
+    POSTGRESQL("org{}postgresql:postgresql:42.7.11", relocation("org{}postgresql", "com.artillexstudios.axparties.libs.postgresql")),
 
-    JDBI_SQLOBJECT("org{}jdbi:jdbi3-sqlobject:3.47.0", relocation("org{}jdbi{}v3", "com.artillexstudios.axparties.libs.jdbi"));
+    HIKARICP("com{}zaxxer:HikariCP:7.0.2", relocation("com{}zaxxer{}hikari", "com.artillexstudios.axparties.libs.hikari")),
+
+    JDBI_CORE("org{}jdbi:jdbi3-core:3.53.0", relocation("org{}jdbi{}v3", "com.artillexstudios.axparties.libs.jdbi")),
+
+    JDBI_SQLOBJECT("org{}jdbi:jdbi3-sqlobject:3.53.0", relocation("org{}jdbi{}v3", "com.artillexstudios.axparties.libs.jdbi"));
 
     private final List<Relocation> relocations = new ArrayList<>();
     private final Dependency library;
